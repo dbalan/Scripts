@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# This script downloads the links in the file $SRC. Written to be used as a cron job, but still has to hack.
-
+# This script downloads the links in the file $SRC. Written to be used as a cron job, but still has to hack. 
+# As of now this is same as 
+# 	wget -ic $SRC
+#
 
 SRC=links
 
@@ -16,7 +18,7 @@ N=0
 cat $SRC | while read LINK; do
 	echo I: Downloading $N
 	N=$((N+1))
-	wget "$LINK"
+	wget -c "$LINK"
 	done
 
 exit 0

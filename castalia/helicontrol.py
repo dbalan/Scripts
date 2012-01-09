@@ -45,16 +45,16 @@ while True:
                 screen.blit(text_surface, (8, y))
                 
                 
-                if key_constant == 'up':
+                if key_name == 'up':
                     port.write(_up_data)
 
-                if key_constant == 'down':
+                if key_name == 'down':
                     port.write(_down_data)
                 
-                if key_constant == 'right':
+                if key_name == 'right':
                     port.write(_right_data)
                     
-                if key_constant == 'left':
+                if key_name == 'left':
                     port.write(_left_data)
                     
                 

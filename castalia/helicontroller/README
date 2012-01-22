@@ -1,0 +1,4 @@
+Helicontroller.
+
+This code interfaces with a custom made hardware controller for hobbyist flying devices with two controls, one to adjust rotor speed and four directional keys for movement once in air. 
+The file helicopter.py can be used to set the specifications of hardware. It connects to the device via serial interface via pySerial.

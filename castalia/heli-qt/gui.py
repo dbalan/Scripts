@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'gui.ui'
 #
-# Created: Sun Jan 22 08:45:43 2012
+# Created: Sun Jan 22 10:57:02 2012
 #      by: PyQt4 UI code generator 4.9
 #
 # WARNING! All changes made in this file will be lost!
@@ -37,6 +37,12 @@ class Ui_Dialog(object):
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.verticalLayout.addWidget(self.label_2)
+        self.dial = DirectionDial(Dialog)
+        self.dial.setGeometry(QtCore.QRect(190, 40, 101, 131))
+        self.dial.setObjectName(_fromUtf8("dial"))
+        self.pushButton = QtGui.QPushButton(Dialog)
+        self.pushButton.setGeometry(QtCore.QRect(270, 190, 99, 23))
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -45,4 +51,15 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Helicontrol", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Dialog", "Rotor", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("Dialog", "0", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton.setText(QtGui.QApplication.translate("Dialog", "&Quit", None, QtGui.QApplication.UnicodeUTF8))
 
+class DirectionDial(QtGui.QDial):
+    def __init__(self, *args):
+        QtGui.QDial.__init__(self, *args)
+        
+    def event(self, event):
+        if (event.type()==QtCore.QEvent.KeyPress) and (event.key()==QtCore.Qt.Key_Tab):
+            self.emit(QtCore.SIGNAL("tabPressed"))
+            return True
+
+        return QtGui.QDial.event(self, event)

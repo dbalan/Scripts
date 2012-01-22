@@ -3,6 +3,7 @@ from PyQt4 import QtCore, QtGui
 from gui import Ui_Dialog
 from helicopter import copter
 
+
 class mainWindow(QtGui.QMainWindow):
   def __init__(self, parent=None):
     QtGui.QWidget.__init__(self, parent)
@@ -10,17 +11,17 @@ class mainWindow(QtGui.QMainWindow):
     self.ui.setupUi(self)
     self.device = copter('/dev/ttyUSB0', 115200)
     
-  def event(self, event):
-    print event.type()
-    if (event.type()==QtCore.QEvent.KeyPress) and (event.key()==QtCore.Qt.Key_Tab):
-      self.emit(QtCore.SIGNAL("tabPressed"))
-      return True
+  #def event(self, event):
+  #print event.type()
+  #if (event.type()==QtCore.QEvent.KeyPress) and (event.key()==QtCore.Qt.Key_Tab):
+  #self.emit(QtCore.SIGNAL("tabPressed"))
+  #return True
       
-
-    
     QtCore.QObject.connect(self.ui.verticalSlider, QtCore.SIGNAL("sliderMoved(int)"), self.adjust_rotor)
-    QtCore.QObject.connect(self.ui.verticalSlider, QtCore.SIGNAL("valueChanged(int)"), self.adjust_rotor)	
-    QtCore.QObject.connect(self, QtCore.SIGNAL("tabPressed"), self.test)
+    QtCore.QObject.connect(self.ui.verticalSlider, QtCore.SIGNAL("valueChanged(int)"), self.adjust_rotor)
+    QtCore.QObject.connect(self.ui.pushButton, QtCore.SIGNAL("clicked()"), QtCore.QCoreApplication.instance().quit)
+    QtCore.QObject.connect(self.ui.dial, QtCore.SIGNAL("tabPressed"), self.test)
+    
     
   def test(self):
     print 'hello'

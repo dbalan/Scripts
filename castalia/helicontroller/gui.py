@@ -30,6 +30,10 @@ class Ui_Dialog(object):
         self.verticalLayout.addWidget(self.label)
         self.verticalSlider = QtGui.QSlider(self.verticalLayoutWidget)
         self.verticalSlider.setTracking(False)
+        
+        # set slider maximum value here.
+        self.verticalSlider.setMaximum(50)
+        
         self.verticalSlider.setOrientation(QtCore.Qt.Vertical)
         self.verticalSlider.setObjectName(_fromUtf8("verticalSlider"))
         self.verticalLayout.addWidget(self.verticalSlider)

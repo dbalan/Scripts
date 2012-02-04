@@ -9,6 +9,8 @@ class mainWindow(QtGui.QMainWindow):
     QtGui.QWidget.__init__(self, parent)
     self.ui = Ui_Dialog()
     self.ui.setupUi(self)
+    
+    # Set your serial Port/Baudrate Here.
     self.device = copter('/dev/ttyUSB0', 115200)
     
   #def event(self, event):

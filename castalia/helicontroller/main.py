@@ -10,8 +10,8 @@ class mainWindow(QtGui.QMainWindow):
     self.ui = Ui_Dialog()
     self.ui.setupUi(self)
     
-    # Set your serial Port/Baudrate Here.
-    self.device = copter('/dev/ttyUSB0', 115200)
+    # Set your serial Port/Baudrate/time between two value changes(in second) Here.
+    self.device = copter('/dev/ttyUSB0', 115200, 0)
     
   #def event(self, event):
   #print event.type()

@@ -18,6 +18,11 @@ class DirectionDial(QtGui.QDial):
             self.emit(QtCore.SIGNAL("upPressed"))
           if event.key()==QtCore.Qt.Key_Down:
             self.emit(QtCore.SIGNAL("downPressed"))
+          if event.key()==QtCore.Qt.Key_Z:
+            self.emit(QtCore.SIGNAL("rotorUp"))
+          if event.key()==QtCore.Qt.Key_X:
+            self.emit(QtCore.SIGNAL("rotorDown"))
+          
           return True
         #if event.type()==QtCore.QEvent.KeyRelease:
 	  #if (event.key()==QtCore.Qt.Key_Left) or (event.key()==QtCore.Qt.Key_Right):

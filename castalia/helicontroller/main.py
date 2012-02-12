@@ -11,7 +11,7 @@ class mainWindow(QtGui.QMainWindow):
     self.ui.setupUi(self)
     
     # Set your serial Port/Baudrate/time between two value changes(in second) Here.
-    self.device = copter('/dev/ttyUSB0', 115200, 0)
+    self.device = copter('/dev/ttyUSB0', 19200, 0)
     
   #def event(self, event):
   #print event.type()
@@ -19,13 +19,15 @@ class mainWindow(QtGui.QMainWindow):
   #self.emit(QtCore.SIGNAL("tabPressed"))
   #return True
       
-    QtCore.QObject.connect(self.ui.verticalSlider, QtCore.SIGNAL("sliderMoved(int)"), self.adjust_rotor)
-    QtCore.QObject.connect(self.ui.verticalSlider, QtCore.SIGNAL("valueChanged(int)"), self.adjust_rotor)
+    #QtCore.QObject.connect(self.ui.verticalSlider, QtCore.SIGNAL("sliderMoved(int)"), self.adjust_rotor)
+    #QtCore.QObject.connect(self.ui.verticalSlider, QtCore.SIGNAL("valueChanged(int)"), self.adjust_rotor)
     QtCore.QObject.connect(self.ui.pushButton, QtCore.SIGNAL("clicked()"), QtCore.QCoreApplication.instance().quit)
     QtCore.QObject.connect(self.ui.dial, QtCore.SIGNAL("leftPressed"), lambda: self.device.adjust_direction('x', '-'))
     QtCore.QObject.connect(self.ui.dial, QtCore.SIGNAL("rightPressed"), lambda: self.device.adjust_direction('x', '+'))
     QtCore.QObject.connect(self.ui.dial, QtCore.SIGNAL("downPressed"), lambda: self.device.adjust_direction('y', '-'))
     QtCore.QObject.connect(self.ui.dial, QtCore.SIGNAL("upPressed"), lambda: self.device.adjust_direction('y', '+'))
+    QtCore.QObject.connect(self.ui.dial, QtCore.SIGNAL("rotorUp"), lambda: self.device.adjust_rotor('+'))
+    QtCore.QObject.connect(self.ui.dial, QtCore.SIGNAL("rotorDown"), lambda: self.device.adjust_rotor('-'))
     QtCore.QObject.connect(self.ui.dial, QtCore.SIGNAL("directionReleased"), self.device.init_direction)
    
     

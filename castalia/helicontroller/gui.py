@@ -32,7 +32,7 @@ class Ui_Dialog(object):
         self.verticalSlider.setTracking(False)
         
         # set slider maximum value here.
-        self.verticalSlider.setMaximum(100)
+        self.verticalSlider.setMaximum(50)
         
         self.verticalSlider.setOrientation(QtCore.Qt.Vertical)
         self.verticalSlider.setObjectName(_fromUtf8("verticalSlider"))

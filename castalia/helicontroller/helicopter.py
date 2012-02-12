@@ -28,9 +28,9 @@ class copter:
     print direction
     # The direction PWM mapping is done here.
     if direction == 'x':
-      direction = 'A'
-    else if direction = 'y':
       direction = 'B'
+    else if direction = 'y':
+      direction = 'C'
     if self.dvalue > 0 and self.dvalue < 100:
       if value == '+':
 	self.dvalue += 1

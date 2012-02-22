@@ -2,6 +2,9 @@
 # Heavily based on
 # mouse-gestures http://code.google.com/p/mouse-gestures/
 # Thanks: Jemshid K.K
+# 
+# Depends: pyblobs library. http://code.google.com/p/pyblobs/
+
 
 import urllib
 from opencv.cv import *

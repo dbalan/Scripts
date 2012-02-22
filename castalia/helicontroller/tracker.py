@@ -4,15 +4,20 @@
 # Thanks: Jemshid K.K
 
 import urllib
+from opencv.cv import *
+from opencv.highgui import *
+from blobs.BlobResult import *
+from blobs.Blob import *
 
 # set filename.
-file="shot.jpg"
+file_name="shot.jpg"
 path="http://192.168.1.44:8080/shot.jpg"
 
 image = urllib.URLopener()
 
 def track():
-    image.retrieve(path, filename)
+    # Testing.	
+    #image.retrieve(path, filename)
     frame = cvLoadImage(file_name) 
     
     red = red = cvCreateImage (cvGetSize (frame), 8, 1)

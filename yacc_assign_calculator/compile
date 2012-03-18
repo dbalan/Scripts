@@ -1,7 +1,7 @@
 #!/bin/sh
 rm cal.o
 yacc -d calculator.y
-lex calculator.l
-cc lex.yy.c y.tab.c -o cal.o
+flex calculator.l
+cc y.tab.c -o cal.o
 echo Executing Program
 ./cal.o

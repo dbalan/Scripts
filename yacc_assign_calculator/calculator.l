@@ -1,29 +1,23 @@
 
 %{
 #include "y.tab.h"
+
+
+
 %}
-
 digit [0-9]
-operand [-+*/]
-whitespace [\t]
-other . 
-
+operand [-+*/\n]
+white [\t]
+other .
 %%
-{digit}+
-{ yylval=atoi(yytext);
-  return INTEGER;
-}
+{digit}+ { yylval=atoi(yytext); return INTEGER; }
 
 {operand} return *yytext;
-{whitespace} ; /* skip */
+{white} ;
 
 {other} yyerror("invalid character");
-
 %%
-
 int yywrap(void){
-/* Done, were good! */
 return 1;
-
 }
 

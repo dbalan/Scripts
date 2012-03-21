@@ -28,15 +28,15 @@ class Ui_Dialog(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName(_fromUtf8("label"))
         self.verticalLayout.addWidget(self.label)
-        self.verticalSlider = QtGui.QSlider(self.verticalLayoutWidget)
-        self.verticalSlider.setTracking(False)
+        #self.verticalSlider = QtGui.QSlider(self.verticalLayoutWidget)
+        #self.verticalSlider.setTracking(False)
         
         # set slider maximum value here.
-        self.verticalSlider.setMaximum(50)
+        #self.verticalSlider.setMaximum(50)
         
-        self.verticalSlider.setOrientation(QtCore.Qt.Vertical)
-        self.verticalSlider.setObjectName(_fromUtf8("verticalSlider"))
-        self.verticalLayout.addWidget(self.verticalSlider)
+        #self.verticalSlider.setOrientation(QtCore.Qt.Vertical)
+        #self.verticalSlider.setObjectName(_fromUtf8("verticalSlider"))
+        #self.verticalLayout.addWidget(self.verticalSlider)
         self.label_2 = QtGui.QLabel(self.verticalLayoutWidget)
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName(_fromUtf8("label_2"))

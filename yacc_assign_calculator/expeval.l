@@ -13,16 +13,17 @@ letter [a-z]
 other .
 %%
 
-0 { yylval=atoi(yytext); return INTEGER; }
-{digitn}{digit}* { yylval=atoi(yytext); return INTEGER; }
+0 { return VAR; }
+{digitn}{digit}* {return VAR; }
 
-{letter}+{digit}* { yylval=atoi(yytext); return INTEGER; }
+{letter}+{digit}* {return VAR; }
 {operand} return *yytext;
 {white} ;
 
 {other} yyerror("invalid character");
 %%
-int yywrap(void){
-return 1;
-}
+
+;int yywrap(void){
+;return 1;
+;}
 

@@ -4,7 +4,7 @@
 
 %}
 
-%token INTEGER
+%token VAR
 
 %%
 
@@ -13,12 +13,12 @@ program expr '\n' {printf("Valid Expression.\n",$2);}
     |
     ;
 expr:
-  INTEGER         {$$=$1;}
-  | expr '+' expr {$$=$1+$3;}
-  | expr '-' expr {$$=$1-$3;}
-  | expr '*' expr {$$=$1*$3;}
-  | expr '/' expr {$$=$1/$3;}
-| '(' expr ')' {}  
+  VAR         
+  | expr '+' expr 
+  | expr '-' expr 
+  | expr '*' expr 
+  | expr '/' expr 
+| '(' expr ')'  
   ;
 %%
      
@@ -30,5 +30,5 @@ int main(void){
 int yyerror()
 {
   printf("\nInvalid Expression!!\n");
-  return 1;
+  exit(0);
 }

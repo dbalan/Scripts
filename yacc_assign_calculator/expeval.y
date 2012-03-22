@@ -5,20 +5,40 @@
 %}
 
 %token VAR
+%token IFL
+%token AVAR
 
 %%
 
 program:
-program expr '\n' {printf("Valid Expression.\n",$2);}
+program statement '\n' {printf("Valid Expression.\n",$2);}
     |
     ;
+
+statement:
+   AVAR
+  |AVAR '=' expr
+  | boolstatement
+  | IFL '(' statement ')' '{' statement '}'
+  | statement ';' statement
+  | '{' statement '}'
+  ;
+
+boolstatement:
+ expr '=''=' expr
+ | expr '>''=' expr
+ | expr '<''=' expr
+ ;
+
 expr:
-  VAR         
+  VAR
+  | AVAR         
   | expr '+' expr 
   | expr '-' expr 
   | expr '*' expr 
   | expr '/' expr 
-| '(' expr ')'  
+  | '(' expr ')'
+  |
   ;
 %%
      
@@ -30,5 +50,5 @@ int main(void){
 int yyerror()
 {
   printf("\nInvalid Expression!!\n");
-  exit(0);
+  //exit(0);
 }

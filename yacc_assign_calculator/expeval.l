@@ -16,7 +16,7 @@ if {return IFL;}
 0 { return VAR; }
 {digitn}{digit}* {return VAR; }
 
-{letter}+{digit}* {return AVAR; }
+{letter}+{digit}* {return IDE; }
 {operand} return *yytext;
 {white} ;
 

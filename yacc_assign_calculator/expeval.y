@@ -6,7 +6,7 @@
 
 %token VAR
 %token IFL
-%token AVAR
+%token IDE
 
 %%
 
@@ -16,11 +16,10 @@ program statement '\n' {printf("Valid Expression.\n",$2);}
     ;
 
 statement:
-   AVAR
-  |AVAR '=' expr
+  IDE '=' expr';'
   | boolstatement
-  | IFL '(' statement ')' '{' statement '}'
-  | statement ';' statement
+  | IFL '(' boolstatement ')' '{'statement '}'
+  | statement ';' statement 
   | '{' statement '}'
   ;
 
@@ -28,11 +27,13 @@ boolstatement:
  expr '=''=' expr
  | expr '>''=' expr
  | expr '<''=' expr
+ | IDE
+ | VAR
  ;
 
 expr:
   VAR
-  | AVAR         
+  | IDE         
   | expr '+' expr 
   | expr '-' expr 
   | expr '*' expr 

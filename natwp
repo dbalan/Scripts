@@ -1,0 +1,27 @@
+#!/bin/bash
+
+
+CACHEDIR=.wall-of-day
+LINK=http://photography.nationalgeographic.com/photography/photo-of-the-day/
+
+# Set up directories
+if [ -d ${CACHEDIR} ]
+then
+    rm -rf ${CACHEDIR}
+    mkdir ${CACHEDIR}
+else
+    mkdir $CACHEDIR
+fi
+
+# Get the link.
+# From Jaseem
+
+IMAGE=$(curl -s ${LINK} | grep 'Download Wallpaper' | grep -Po 'http.*.jpg')
+IMAGENAME=${CACHEDIR}/$(echo $IMAGE| awk -F "/" '{print $NF}')
+
+curl -S $IMAGE > ${IMAGENAME}
+
+gsettings set org.gnome.desktop.background picture-uri file://${IMAGENAME}
+
+#gsettings set org.gnome.desktop.background picture-options centered
+## Possible values: centered, none, scaled, spanned, stretched, wallpaper, zoom

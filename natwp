@@ -4,15 +4,6 @@
 CACHEDIR=~/.wall-of-day
 LINK=http://photography.nationalgeographic.com/photography/photo-of-the-day/
 
-# Set up directories
-if [ -d ${CACHEDIR} ]
-then
-    rm -rf ${CACHEDIR}
-    mkdir ${CACHEDIR}
-else
-    mkdir $CACHEDIR
-fi
-
 # Get the link.
 # From Jaseem
 
@@ -24,6 +15,18 @@ then
 	echo "Non sharable image. :-("
 	exit
 fi
+
+
+# Set up directories
+if [ -d ${CACHEDIR} ]
+then
+    rm -rf ${CACHEDIR}
+    mkdir ${CACHEDIR}
+else
+    mkdir $CACHEDIR
+fi
+
+
 IMAGENAME=${CACHEDIR}/$IMAGENAME}
 
 curl -S $IMAGE > ${IMAGENAME}

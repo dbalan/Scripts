@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-CACHEDIR=.wall-of-day
+CACHEDIR=~/.wall-of-day
 LINK=http://photography.nationalgeographic.com/photography/photo-of-the-day/
 
 # Set up directories
@@ -17,7 +17,14 @@ fi
 # From Jaseem
 
 IMAGE=$(curl -s ${LINK} | grep 'Download Wallpaper' | grep -Po 'http.*.jpg')
-IMAGENAME=${CACHEDIR}/$(echo $IMAGE| awk -F "/" '{print $NF}')
+IMAGENAME=$(echo $IMAGE| awk -F "/" '{print $NF}')
+
+if [ -z "${IMAGENAME}" ]
+then
+	echo "Non sharable image. :-("
+	exit
+fi
+IMAGENAME=${CACHEDIR}/$IMAGENAME}
 
 curl -S $IMAGE > ${IMAGENAME}
 
